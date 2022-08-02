@@ -9,10 +9,7 @@ class CPEGuesser:
         self.rdb = redis.Redis(host='127.0.0.1', port=6379, db=8, decode_responses=True)
 
     def guessCpe(self, words):
-        k = []
-        for keyword in words:
-            k.append(f"w:{keyword.lower()}")
-
+        k = [f"w:{keyword.lower()}" for keyword in words]
         maxinter = len(k)
         cpes = []
         for x in reversed(range(maxinter)):

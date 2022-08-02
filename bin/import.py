@@ -72,10 +72,8 @@ class CPEHandler(xml.sax.ContentHandler):
 def CPEExtractor(cpe=None):
     if cpe is None:
         return False
-    record = {}
     cpefield = cpe.split(":")
-    record['vendor'] = cpefield[3]
-    record['product'] = cpefield[4]
+    record = {'vendor': cpefield[3], 'product': cpefield[4]}
     cpeline = ""
     for cpeentry in cpefield[:5]:
         cpeline = f"{cpeline}:{cpeentry}"
@@ -85,8 +83,7 @@ def CPEExtractor(cpe=None):
 
 def canonize(value=None):
     value = value.lower()
-    words = value.split('_')
-    return words
+    return value.split('_')
 
 
 def insert(word=None, cpe=None):

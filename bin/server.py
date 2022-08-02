@@ -26,9 +26,7 @@ class Search:
             resp.media = "Missing query array or incorrect JSON format"
             return
 
-        if 'query' in q:
-            pass
-        else:
+        if 'query' not in q:
             resp.status = falcon.HTTP_400
             resp.media = "Missing query array or incorrect JSON format"
             return
